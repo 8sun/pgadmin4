@@ -195,7 +195,7 @@ class BatchProcess(object):
             :param env: Dict of environment variable
             :return: Encoded environment variable as string
             """
-            encoding = sys.getdefaultencoding()
+            encoding = sys.getfilesystemencoding()
             if encoding is None or encoding == 'ascii':
                 encoding = 'utf-8'
             temp_env = dict()
@@ -361,7 +361,7 @@ class BatchProcess(object):
         stderr = []
         out_completed = err_completed = False
         process_output = (out != -1 and err != -1)
-        enc = sys.getdefaultencoding()
+        enc = sys.getfilesystemencoding()
 
         def read_log(logfile, log, pos, ctime):
             completed = True
